@@ -1,0 +1,1 @@
+# tericsoft-devops-intern-task
