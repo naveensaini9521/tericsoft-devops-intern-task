@@ -1,32 +1,491 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tericsoft DevOps Internship Task</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1120">
+  <meta name="description" content="Naveen Saini — Python Backend Developer and DevOps fresher. Explore projects, technical skills, and experience.">
+  <title>Naveen Saini | Developer Portfolio</title>
+
   <style>
-    :root { color-scheme: light; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #f3f6fb; color: #172033; }
-    main { width: min(680px, calc(100% - 40px)); box-sizing: border-box; padding: 40px; background: white; border: 1px solid #dfe6f0; border-radius: 18px; box-shadow: 0 18px 55px rgba(25, 45, 80, .08); }
-    .tag { display: inline-block; padding: 6px 10px; border-radius: 999px; background: #e8f7ee; color: #17683a; font-size: .85rem; font-weight: 700; }
-    h1 { margin: 18px 0 10px; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -.04em; }
-    p { color: #526078; line-height: 1.65; }
-    ul { padding-left: 20px; color: #34415a; line-height: 1.9; }
-    code { background: #eef2f8; padding: 3px 6px; border-radius: 5px; }
-    footer { border-top: 1px solid #e8edf4; margin-top: 24px; padding-top: 16px; font-size: .9rem; color: #69758a; }
+    :root {
+      --bg: #0b1120;
+      --surface: #111b2e;
+      --border: #27364c;
+      --text: #edf3ff;
+      --muted: #a3b1c7;
+      --accent: #76c7ff;
+      --green: #76e0c1;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1080px, calc(100% - 36px));
+      margin: auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+
+    .logo span, h1 span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .nav-links a:hover, .project-link:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 95px 0 75px;
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 7vw, 5rem);
+      line-height: 1.08;
+      letter-spacing: -.065em;
+      margin: 16px 0;
+    }
+
+    .hero h2 {
+      color: #c4d1e5;
+      font-size: clamp(1.2rem, 3vw, 1.65rem);
+      font-weight: 500;
+      margin: 0 0 20px;
+    }
+
+    .lead {
+      max-width: 730px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 11px 17px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .btn-primary {
+      color: #081321;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .btn:hover { opacity: .85; }
+
+    section { padding: 35px 0 55px; }
+
+    .section-title {
+      font-size: 1.9rem;
+      letter-spacing: -.04em;
+      margin: 0 0 8px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      margin: 0 0 24px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .card {
+      padding: 23px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.12rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0 0 15px;
+      font-size: .94rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      background: #1b2a40;
+      border: 1px solid #30425c;
+      color: #c8d8ed;
+      border-radius: 6px;
+      padding: 3px 9px;
+      font-size: .76rem;
+    }
+
+    .project-link {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .timeline {
+      border-left: 2px solid var(--border);
+      padding-left: 23px;
+      margin-left: 5px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 28px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -30px;
+      top: 9px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .meta {
+      color: var(--green);
+      font-size: .85rem;
+      font-weight: 700;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .skill-group h3 {
+      color: var(--accent);
+      font-size: .98rem;
+    }
+
+    .skill-group p {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-bottom: 0;
+    }
+
+    .contact {
+      padding: 28px;
+      background: linear-gradient(120deg, #14243a, #102b32);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .contact p { color: var(--muted); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+      margin-top: 25px;
+      color: var(--muted);
+      font-size: .85rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 700px) {
+      .hero { padding: 65px 0 45px; }
+      .grid, .skills { grid-template-columns: 1fr; }
+      nav { align-items: flex-start; flex-direction: column; }
+      .nav-links { gap: 14px; }
+    }
   </style>
 </head>
+
 <body>
+<div class="container">
+
+  <nav>
+    <a class="logo" href="#">Naveen<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
   <main>
-    <span class="tag">Deployment successful</span>
-    <h1>Hello from Docker on AWS!</h1>
-    <p>This sample web application is served by Nginx inside a Docker container on an AWS EC2 instance.</p>
-    <ul>
-      <li>Application: static HTML</li>
-      <li>Container runtime: Docker</li>
-      <li>Application port: <code>8081</code></li>
-    </ul>
-    <footer>Tericsoft Technologies — DevOps Internship Task</footer>
+    <header class="hero" id="about">
+      <div class="eyebrow">B.Tech IT Graduate · 2026</div>
+      <h1>Hi, I'm Naveen <span>Saini.</span></h1>
+      <h2>Python Backend Developer | Aspiring DevOps Engineer</h2>
+      <p class="lead">
+        I build backend applications and explore cloud-native deployment
+        through hands-on projects. My experience includes Python, REST APIs,
+        Docker, Kubernetes, CI/CD pipelines, infrastructure automation, and
+        AWS fundamentals. I am looking for an entry-level opportunity where
+        I can contribute, learn, and grow as an engineer.
+      </p>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="#projects">Explore My Projects ↓</a>
+        <a class="btn" href="https://github.com/naveensaini9521"
+           target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a class="btn" href="https://www.linkedin.com/in/naveen-saini-7ba247262"
+           target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      </div>
+    </header>
+
+    <section id="skills">
+      <div class="eyebrow">Technical toolkit</div>
+      <h2 class="section-title">Skills & Technologies</h2>
+      <p class="section-description">
+        Technologies used in development, learning, and personal projects.
+      </p>
+
+      <div class="skills">
+        <article class="card skill-group">
+          <h3>Programming & Backend</h3>
+          <p>Python, C++, SQL, Flask, FastAPI, REST APIs, JWT, SQLAlchemy</p>
+        </article>
+
+        <article class="card skill-group">
+          <h3>DevOps & Cloud</h3>
+          <p>Docker, Kubernetes, AWS EC2/IAM/VPC, Jenkins, GitHub Actions,
+             Terraform, Ansible, Linux, Bash, Nginx</p>
+        </article>
+
+        <article class="card skill-group">
+          <h3>Databases & Web</h3>
+          <p>MySQL, MongoDB, Redis, React, JavaScript, HTML, CSS, Bootstrap</p>
+        </article>
+
+        <article class="card skill-group">
+          <h3>Monitoring & Quality</h3>
+          <p>Prometheus, Grafana, pytest, flake8, SonarQube</p>
+        </article>
+
+        <article class="card skill-group">
+          <h3>Tools</h3>
+          <p>Git, GitHub, Docker Compose, Kubernetes tooling, Claude, GitHub Copilot</p>
+        </article>
+
+        <article class="card skill-group">
+          <h3>Core Concepts</h3>
+          <p>Object-oriented programming, data structures, API integration,
+             containerization, CI/CD, infrastructure as code</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="eyebrow">Selected work</div>
+      <h2 class="section-title">Projects</h2>
+      <p class="section-description">
+        Practical projects exploring backend development, containers,
+        automation, monitoring, and cloud infrastructure.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Kubernetes-Native Voting App</h3>
+          <p>
+            Containerized voting application with a multi-service architecture
+            using Flask, Redis, a worker service, PostgreSQL, and a results UI.
+            Explored Kubernetes deployments, persistent storage, ingress,
+            health probes, resource limits, and CI validation.
+          </p>
+          <div class="tags">
+            <span class="tag">Docker</span><span class="tag">Kubernetes</span>
+            <span class="tag">Jenkins</span><span class="tag">PostgreSQL</span>
+            <span class="tag">Redis</span>
+          </div>
+          <p style="margin-top:17px">
+            <a class="project-link"
+               href="https://github.com/naveensaini9521/voting-app"
+               target="_blank" rel="noopener noreferrer">View source code ↗</a>
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Real-Time Log Monitoring Platform</h3>
+          <p>
+            Developed a project combining log collection agents, API services,
+            and a web interface to explore log ingestion, storage, and monitoring.
+            Used asynchronous database access and infrastructure automation.
+          </p>
+          <div class="tags">
+            <span class="tag">FastAPI</span><span class="tag">Flask</span>
+            <span class="tag">React</span><span class="tag">MongoDB</span>
+            <span class="tag">Terraform</span><span class="tag">Ansible</span>
+          </div>
+          <p style="margin-top:17px">
+            <a class="project-link"
+               href="https://github.com/naveensaini9521/Log_monitoring_system"
+               target="_blank" rel="noopener noreferrer">View source code ↗</a>
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Smart Voting System with Face Recognition</h3>
+          <p>
+            Built a voting application exploring face recognition, authentication,
+            a web interface, and database integration. Worked with containerization,
+            reverse-proxy configuration, and automated testing.
+          </p>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Flask</span>
+            <span class="tag">React</span><span class="tag">OpenCV</span>
+            <span class="tag">MongoDB</span><span class="tag">Docker</span>
+          </div>
+          <p style="margin-top:17px">
+            <a class="project-link"
+               href="https://github.com/naveensaini9521/Smart-Voting-System-with-Face-Recognition"
+               target="_blank" rel="noopener noreferrer">View source code ↗</a>
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Cloud & DevOps Playground</h3>
+          <p>
+            A learning project exploring AWS infrastructure provisioning,
+            Terraform, Ansible automation, networking, and deploying a web
+            service behind a load balancer.
+          </p>
+          <div class="tags">
+            <span class="tag">AWS</span><span class="tag">Terraform</span>
+            <span class="tag">Ansible</span><span class="tag">Nginx</span>
+            <span class="tag">Linux</span>
+          </div>
+          <p style="margin-top:17px">
+            <a class="project-link"
+               href="https://github.com/naveensaini9521/devops-playground"
+               target="_blank" rel="noopener noreferrer">View source code ↗</a>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="eyebrow">Professional experience</div>
+      <h2 class="section-title">Internship</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="meta">May 2024 – July 2024 · Jaipur, India</div>
+          <h3>Python Development Intern</h3>
+          <p><strong>Datacube Softech Pvt. Ltd.</strong></p>
+          <p class="section-description">
+            Worked on Python and Flask backend development, including REST API
+            implementation, request validation, authentication, and database
+            integration. Contributed to frontend integration, debugging,
+            testing, and improving database/API query workflows.
+          </p>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Flask</span>
+            <span class="tag">REST APIs</span><span class="tag">SQL</span>
+            <span class="tag">SQLite</span><span class="tag">Git</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="eyebrow">Academic background</div>
+      <h2 class="section-title">Education</h2>
+
+      <article class="card">
+        <div class="meta">Completed 2026</div>
+        <h3>Bachelor of Technology — Information Technology</h3>
+        <p>Rajasthan Technical University, Kota, Rajasthan</p>
+        <p><strong>CGPA: 8.5</strong></p>
+      </article>
+    </section>
+
+    <section id="contact">
+      <div class="contact">
+        <div class="eyebrow">Let's connect</div>
+        <h2 class="section-title">Open to entry-level opportunities</h2>
+        <p>
+          I am interested in opportunities in Python backend development,
+          software engineering, and entry-level DevOps or cloud engineering.
+          I am open to relocating for the right opportunity.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary"
+             href="https://www.linkedin.com/in/naveen-saini-7ba247262"
+             target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a>
+          <a class="btn"
+             href="https://github.com/naveensaini9521"
+             target="_blank" rel="noopener noreferrer">Explore GitHub ↗</a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <span>© 2026 Naveen Saini</span>
+    <span>Built with HTML, CSS, and Docker</span>
+  </footer>
+</div>
 </body>
 </html>
