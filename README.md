@@ -165,7 +165,7 @@ Configure inbound rules on the relevant EC2 instance or ECS task security group:
 | Challenge | Resolution |
 |---|---|
 | **SSH connectivity:** initial connection attempts failed. | Checked the instance's public IP, SSH credentials, network reachability, and security-group rules. |
-| **Custom SSH port:** the task requires SSH on port 2222. | Updated and tested both the SSH daemon configuration and the inbound security-group rule. |
+| **Custom SSH port:** the task requires SSH on port 22. | Updated and tested both the SSH daemon configuration and the inbound security-group rule. |
 | **ECR permissions:** repository creation and image operations can fail without the right IAM permissions. | Checked the IAM permissions and ECR authentication configuration. |
 | **Docker image availability:** a container cannot start from an image that is missing locally or cannot be pulled from ECR. | Used Docker image tags and ECR image verification to troubleshoot. |
 | **Public application access:** a container can respond locally while being unreachable externally. | Checked the container port mapping, public IP, and inbound security-group rules for port 8081. |
